@@ -12,10 +12,13 @@
     "prettier": "prettier --check .",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "new:component": "hygen new component"
   },
   "dependencies": {
+    "cntl": "^1.0.0",
     "next": "13.0.6",
+    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -36,7 +39,7 @@
     "addon-screen-reader": "^1.8.6",
     "autoprefixer": "^10.4.13",
     "axe-playwright": "^1.1.11",
-    "babel-loader": "^8.3.0",
+    "babel-loader": "^9.1.0",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.6",
     "eslint-config-prettier": "^8.5.0",
@@ -45,7 +48,9 @@
     "eslint-plugin-sonarjs": "^0.17.0",
     "eslint-plugin-storybook": "^0.6.8",
     "husky": "^8.0.2",
+    "hygen": "^6.2.11",
     "lint-staged": "^13.1.0",
+    "pascalize": "^1.0.1",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
     "storybook-addon-designs": "^6.3.1",
@@ -53,7 +58,6 @@
   },
   "lint-staged": {
     "*.{js,json,md}": "prettier --write",
-    "*.js": "eslint --cache --color --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.js": "eslint --cache --color --fix"
   }
 }
