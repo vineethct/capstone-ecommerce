@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [Replace with client/project name]
 
-## Getting Started
+## Getting started
 
-First, run the development server:
+1. Clone this repo:
 
-```bash
-npm run dev
-# or
+```sh
+git clone git@github.com:codeandtheory/[client-project_name].git # update with the repo URL
+cd [client-project_name] # update
+```
+
+2. Install dependencies (please note we're using Yarn and not npm):
+
+```sh
+yarn
+```
+
+3. Run development server
+
+```sh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Storybook
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+This project uses Storybook deployed on Vercel at the following permanent URLs:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<!-- Optionally add other branches/environments -->
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`main` branch -> [[client-project_name].vercel.app](https://[client-project_name].vercel.app) <br/>
 
-## Learn More
+as well as on ephemeral URLs for each Pull Request.
 
-To learn more about Next.js, take a look at the following resources:
+To run the SB locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+yarn storybook
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### New component generator
 
-## Deploy on Vercel
+As a convenience there is a new component generator script which will scaffold a basic boilerplate for the new component including the Storybook template with an option to link to the component design in Figma. In order to invoke it run the following command in your terminal:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+yarn new:component
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+And follow prompts to give component name (note that we're using PascalCase naming convention for components) and Figma link.
+
+#### Extending component generator
+
+If new useful patterns are observed either to improve the existing component generator or to add an entirely new kind of generator, you can look into `.hygen` folder and follow [Hygen](https://www.hygen.io/docs/quick-start) documentation.
