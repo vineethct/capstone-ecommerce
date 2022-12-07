@@ -9,7 +9,10 @@
     "lint": "next lint",
     "prepare": "husky install",
     "format": "prettier --write .",
-    "prettier": "prettier --check ."
+    "prettier": "prettier --check .",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "next": "13.0.6",
@@ -17,17 +20,35 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@degjs/storybook-addon-taffy": "^1.0.4",
+    "@storybook/addon-a11y": "^6.5.14",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.5.14",
+    "@storybook/manager-webpack5": "^6.5.14",
+    "@storybook/react": "^6.5.14",
+    "@storybook/test-runner": "^0.9.1",
+    "@storybook/testing-library": "^0.0.13",
+    "addon-screen-reader": "^1.8.6",
     "autoprefixer": "^10.4.13",
+    "axe-playwright": "^1.1.11",
+    "babel-loader": "^8.3.0",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-sonarjs": "^0.17.0",
+    "eslint-plugin-storybook": "^0.6.8",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
+    "storybook-addon-designs": "^6.3.1",
     "tailwindcss": "^3.2.4"
   },
   "lint-staged": {
