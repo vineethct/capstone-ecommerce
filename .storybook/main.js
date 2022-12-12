@@ -8,14 +8,7 @@ module.exports = {
     "addon-screen-reader",
     "storybook-addon-designs",
     "@degjs/storybook-addon-taffy/register",
-    {
-      name: "@storybook/addon-postcss",
-      options: {
-        postcssLoaderOptions: {
-          implementation: require("postcss"),
-        },
-      },
-    },
+    "storybook-addon-next",
   ],
   framework: "@storybook/react",
   core: {
