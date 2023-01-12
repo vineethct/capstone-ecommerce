@@ -1,5 +1,4 @@
 import { addDecorator } from "@storybook/react";
-import { withTaffy } from "@degjs/storybook-addon-taffy";
 import "../styles/globals.css";
 
 export const parameters = {
@@ -11,5 +10,3 @@ export const parameters = {
     },
   },
 };
-
-addDecorator(withTaffy);
