@@ -7,7 +7,6 @@ module.exports = {
     "@storybook/addon-a11y",
     "addon-screen-reader",
     "storybook-addon-designs",
-    "@degjs/storybook-addon-taffy/register",
     "storybook-addon-next",
   ],
   framework: "@storybook/react",
