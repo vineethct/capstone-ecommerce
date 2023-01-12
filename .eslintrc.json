@@ -5,9 +5,18 @@
     "plugin:sonarjs/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended"
   ],
+  "plugins": ["tailwindcss"],
+  "settings": {
+    "tailwindcss": {
+      "callees": ["ctl"]
+    }
+  },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "tailwindcss/classnames-order": "error"
   }
 }

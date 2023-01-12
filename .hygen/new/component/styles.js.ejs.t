@@ -1,15 +1,15 @@
 ---
 to: <%= absPath %>/<%= componentName %>.styles.js
 ---
-import cntl from "cntl";
+import ctl from "@netlify/classnames-template-literals";
 
-const styles = cntl`
-    bg-slate-800 
-    rounded-xl 
-    w-72 
-    h-72 
-    text-white 
-    text-center
-`;
+const styles = ctl(`
+  h-72
+  w-72
+  rounded-xl
+  bg-slate-800
+  text-center
+  text-white
+`);
 
 export default styles;

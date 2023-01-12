@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "format": "prettier --write .",
+    "format": "yarn lint --fix && prettier --write .",
     "prettier": "prettier --check .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -16,7 +16,7 @@
     "new:component": "hygen new component"
   },
   "dependencies": {
-    "cntl": "^1.0.0",
+    "@netlify/classnames-template-literals": "^1.0.3",
     "next": "13.1.1",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
@@ -45,12 +45,14 @@
     "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-sonarjs": "^0.18.0",
     "eslint-plugin-storybook": "^0.6.10",
+    "eslint-plugin-tailwindcss": "^3.8.0",
     "husky": "^8.0.3",
     "hygen": "^6.2.11",
     "lint-staged": "^13.1.0",
     "pascalize": "^1.0.1",
     "postcss": "^8.4.21",
     "prettier": "^2.8.2",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "storybook-addon-designs": "^6.3.1",
     "storybook-addon-next": "^1.7.1",
     "tailwindcss": "^3.2.4"
