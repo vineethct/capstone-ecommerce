@@ -1,4 +1,3 @@
-import { addDecorator } from "@storybook/react";
 import "../styles/globals.css";
 
 export const parameters = {
