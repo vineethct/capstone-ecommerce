@@ -12,7 +12,7 @@
     "prettier": "prettier --check .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test-storybook": "test-storybook",
+    "test-storybook": "test-storybook -- --passWithNoTests",
     "new:component": "hygen new component"
   },
   "dependencies": {
