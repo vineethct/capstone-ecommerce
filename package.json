@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier .",
+    "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
