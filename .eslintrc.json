@@ -23,7 +23,7 @@
   "rules": {
     "prettier/prettier": "error",
     "no-console": "error",
-    "eqeqeq": "error",
+    "eqeqeq": ["error", "smart"],
     "no-return-await": "error"
   }
 }
