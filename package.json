@@ -46,6 +46,8 @@
     "eslint-plugin-sonarjs": "^0.24.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-unicorn": "^51.0.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss": "^8",
     "prettier": "3.2.5",
     "storybook": "^8.0.0",
