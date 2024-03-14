@@ -59,7 +59,7 @@
     "webpack": "^5.90.3"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
+    "*.{ts,tsx,js,jsx,json,md}": [
       "prettier --write",
       "eslint --max-warnings 0 ."
     ]
