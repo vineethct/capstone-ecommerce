@@ -12,7 +12,8 @@
     "plugin:sonarjs/recommended",
     "plugin:unicorn/recommended",
     "next/core-web-vitals",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:tailwindcss/recommended"
   ],
   "ignorePatterns": ["!.storybook"],
   "parser": "@typescript-eslint/parser",
