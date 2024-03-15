@@ -45,8 +45,8 @@ As a convenience there is a new component generator script which will scaffold a
 yarn new:component
 ```
 
-And follow prompts to give component name (note that we're using PascalCase naming convention for components) and Figma link.
+And follow prompts to give component name and Figma link.
 
 #### Extending component generator
 
-If new useful patterns are observed either to improve the existing component generator or to add an entirely new kind of generator, you can look into `.hygen` folder and follow [Hygen](https://www.hygen.io/docs/quick-start) documentation.
+If new useful patterns are observed either to improve the existing component generator or to add an entirely new kind of generator, you can look into `.plop` folder and follow [Plop](https://plopjs.com/) documentation.
