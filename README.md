@@ -50,3 +50,30 @@ And follow prompts to give component name and Figma link.
 #### Extending component generator
 
 If new useful patterns are observed either to improve the existing component generator or to add an entirely new kind of generator, you can look into `.plop` folder and follow [Plop](https://plopjs.com/) documentation.
+
+#### Adding environment variables
+
+We're using T3 Env library to validate environment variables. Adding new environment variables (both client and server) is done inside src/env.ts file. After they're added you can use them directly:
+
+```ts
+import { env } from "@/env"; // On server
+
+export const GET = async () => {
+  const magic = await fetch("...", {
+    headers: { Authorization: env.EXAMPLE_SERVER_VAR },
+  });
+  // ...
+};
+```
+
+```ts
+import { env } from "@/env"; // On client - same import!
+
+export const SomeComponent = () => {
+  return (
+    <SomeProvider publishableKey={env.NEXT_PUBLIC_EXAMPLE_CLIENT_VAR}>
+      {/* ... */}
+    </SomeProvider>
+  );
+};
+```
