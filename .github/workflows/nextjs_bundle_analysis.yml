@@ -6,10 +6,12 @@ name: 'Next.js Bundle Analysis'
 on:
   pull_request:
     branches:
-      - develop # change this if your default branch is named differently
+      - main
+      - develop
   push:
     branches:
-      - develop # change this if your default branch is named differently
+      - main
+      - develop
   workflow_dispatch:
 
 defaults:
