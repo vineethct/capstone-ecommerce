@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -60,7 +60,7 @@
     "webpack": "^5.90.3"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,md}": [
+    "*.{ts,tsx,js,jsx,md}": [
       "prettier --write",
       "eslint --max-warnings 0 ."
     ]
