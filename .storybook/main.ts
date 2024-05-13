@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 import type { StorybookConfig } from "@storybook/nextjs";
+import { env as t3Env } from "../src/env";
 
 import { join, dirname } from "node:path";
 
@@ -29,5 +30,9 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
+  env: (config1) => ({
+    ...config1,
+    ...t3Env,
+  }),
 };
 export default config;
