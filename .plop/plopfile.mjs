@@ -1,12 +1,12 @@
 export default function (plop) {
   plop.setGenerator("component", {
-    description: "Creates a new component inside of 'src/components'",
+    description: "Creates a new component inside of 'src/app/components'",
     prompts: [
       {
         type: "input",
         name: "name",
         message:
-          "What is the name of the component? This will be placed in 'src/components/{foo-bar}'",
+          "What is the name of the component? This will be placed in 'src/app/components/{foo-bar}'",
       },
       {
         type: "input",
@@ -18,13 +18,13 @@ export default function (plop) {
       // component
       {
         type: "add",
-        path: "../src/components/{{kebabCase name}}/{{kebabCase name}}.component.tsx",
+        path: "../src/app/components/{{kebabCase name}}/{{kebabCase name}}.component.tsx",
         templateFile: "templates/component/component.tsx.hbs",
       },
       // stories
       {
         type: "add",
-        path: "../src/components/{{kebabCase name}}/{{kebabCase name}}.stories.tsx",
+        path: "../src/app/components/{{kebabCase name}}/{{kebabCase name}}.stories.tsx",
         templateFile: "templates/component/stories.tsx.hbs",
       },
     ],
