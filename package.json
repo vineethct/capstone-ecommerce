@@ -14,6 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "new:component": "yarn plop --plopfile ./.plop/plopfile.mjs",
+    "dependency-graph": "npx skott --displayMode=webapp --trackThirdPartyDependencies --trackBuiltinDependencies --cwd=./src",
     "prepare": "husky"
   },
   "dependencies": {
