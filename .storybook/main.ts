@@ -1,4 +1,4 @@
-/* eslint-disable unicorn/prefer-module */
+/* eslint-disable unicorn/prefer-module, unicorn/import-style */
 import type { StorybookConfig } from "@storybook/nextjs";
 import { env as t3Env } from "../src/env";
 
