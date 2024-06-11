@@ -24,8 +24,8 @@ export default function (plop) {
       // stories
       {
         type: "add",
-        path: "../src/app/components/{{kebabCase name}}/{{kebabCase name}}.stories.tsx",
-        templateFile: "templates/component/stories.tsx.hbs",
+        path: "../src/app/components/{{kebabCase name}}/{{kebabCase name}}.component.stories.tsx",
+        templateFile: "templates/component/component.stories.tsx.hbs",
       },
     ],
   });

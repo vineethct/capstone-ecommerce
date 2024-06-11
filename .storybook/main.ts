@@ -14,6 +14,7 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
   addons: [
     getAbsolutePath("@storybook/addon-onboarding"),
     getAbsolutePath("@storybook/addon-links"),
@@ -22,17 +23,23 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-designs"),
   ],
+
   framework: {
     name: getAbsolutePath("@storybook/nextjs"),
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+
+  docs: {},
+
   staticDirs: ["../public"],
+
   env: (config1) => ({
     ...config1,
     ...t3Env,
   }),
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
 };
 export default config;
