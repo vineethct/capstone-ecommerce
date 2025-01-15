@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
+import VideoBackground from "@/components/VideoBackground/videoBackground";
 
 export default function Home() {
   return (
     <main>
       <div>
-        {/* <p>Hello World;</p>
-        <Button>Click me</Button> */}
+      <VideoBackground />
       </div>
     </main>
   );

@@ -11,6 +11,8 @@ const config: Config = {
 		primaryDark : "#22181C",
 		secondaryDark : "#312F2F",
 		tertiary : "#84DCCF",
+		white : "#ffffff",
+		black : "#CCC"
 	},
   	extend: {
   		borderRadius: {

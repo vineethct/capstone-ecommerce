@@ -9,7 +9,7 @@ const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-primary dark:bg-opacity-0 shadow-lg"> 
+    <nav className="bg-primary dark:bg-opacity-0 shadow-lg p-5"> 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
