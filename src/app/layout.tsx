@@ -3,6 +3,9 @@ import { Theme } from "@radix-ui/themes";
 
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
+import { rubik } from "@/components/ui/fonts";
+import NavBar from "@/components/NavBar/navbar";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Website name",
@@ -15,9 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Theme>{children}</Theme>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${rubik.className} antialiased`}>
+        {/* <Theme> */}
+        <Providers>
+          <NavBar />
+          {children}
+        </Providers>
+        {/* </Theme> */}
       </body>
     </html>
   );

@@ -1,0 +1,10 @@
+
+query GetPageblogpost($limit: Int!, $skip: Int!) {
+  pageBlogPostCollection(limit: $limit, skip: $skip) {
+    items {
+      sys {
+        id
+      }
+    }
+  }
+}
