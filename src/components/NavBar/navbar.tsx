@@ -2,18 +2,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import ThemeSwitchButton from "../ui/themeSwapper";
+import Image from "next/image";
+import logo from "@/assets/online-shopping.png"
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-primary dark:bg-altPrimary text-white shadow-lg">
+    <nav className="bg-primary dark:bg-opacity-0 shadow-lg"> 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold">
-              E-Shop
+              <Image src={logo} alt="logo" width={34} height={34} />
             </Link>
           </div>
 
@@ -42,24 +44,24 @@ const NavBar = () => {
 
           {/* Navigation links */}
           <div className="hidden lg:flex lg:space-x-4">
-            <Link href="/" className="hover:bg-secondary px-3 py-2 rounded-md">
+            <Link href="/" className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md">
               Home
             </Link>
             <Link
               href="/about"
-              className="hover:bg-secondary px-3 py-2 rounded-md"
+              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
             >
               About
             </Link>
             <Link
               href="/services"
-              className="hover:bg-secondary px-3 py-2 rounded-md"
+              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
             >
               Services
             </Link>
             <Link
               href="/contact"
-              className="hover:bg-secondary px-3 py-2 rounded-md"
+              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
             >
               Contact
             </Link>
@@ -68,6 +70,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+      <hr className="hidden ml-20 mr-20 dark:visible" />
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (

@@ -8,7 +8,7 @@ import NavBar from "@/components/NavBar/navbar";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Website name",
+  title: "E-shop",
   description: "C&T Next.js starter template",
 };
 

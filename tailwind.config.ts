@@ -5,11 +5,12 @@ const config: Config = {
     content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
 	colors : {
-		primary : "#ffc9b5",
-		secondary : "#f7b1ab",
-		primaryAccent : "#d8aa96",
-		altPrimary : "#807182",
-		altSecondary : "#c7d3bf"
+		primary : "#f6e8ea",
+		primaryAccent : "#E1D2D5",
+		secondary : "#ef626c",
+		primaryDark : "#22181C",
+		secondaryDark : "#312F2F",
+		tertiary : "#84DCCF",
 	},
   	extend: {
   		borderRadius: {
