@@ -1,16 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ThemeSwitchButton from "../ui/theme-swapper";
 import Image from "next/image";
 import logo from "@/assets/online-shopping.png";
 import HamburgerIcon from "@/assets/hamburger";
+import useNavbarHeight from "@/store/navbar-store";
 
 const NavBar = () => {
+  const navRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen] = useState(false);
 
+  const { setHeight } = useNavbarHeight();
+
+  useEffect(() => {
+    if (!navRef.current) return;
+    setHeight(navRef.current.clientHeight);
+  }, [navRef, setHeight]);
+
   return (
-    <nav className="absolute top-0 z-[1] w-full bg-opacity-0 shadow-lg dark:bg-black">
+    <nav
+      ref={navRef}
+      className="absolute top-0 z-[1] w-full bg-opacity-0 shadow-lg dark:bg-black"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
