@@ -1,67 +1,63 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import ThemeSwitchButton from "../ui/themeSwapper";
+import ThemeSwitchButton from "../ui/theme-swapper";
 import Image from "next/image";
-import logo from "@/assets/online-shopping.png"
+import logo from "@/assets/online-shopping.png";
+import HamburgerIcon from "@/assets/hamburger";
 
 const NavBar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-primary dark:bg-opacity-0 shadow-lg p-5"> 
+    <nav className="absolute top-0 z-[1] w-full bg-opacity-0 shadow-lg dark:bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold">
-              <Image src={logo} alt="logo" width={34} height={34} />
+          <div className="shrink-0">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-2xl font-bold"
+            >
+              <Image src={logo} alt="logo" className="size-12 md:size-8 " />
+              <h5 className="text-white">Shopify</h5>
             </Link>
           </div>
 
           {/* Hamburger menu (mobile) */}
           <div className="block lg:hidden">
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {}}
               className="text-white focus:outline-none"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
+              <HamburgerIcon />
             </button>
           </div>
 
           {/* Navigation links */}
-          <div className="hidden lg:flex lg:space-x-4">
-            <Link href="/" className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md">
+          <div className="hidden text-white lg:flex lg:space-x-4">
+            <Link
+              href="/"
+              className="rounded-md px-3 py-2 hover:bg-primaryAccent"
+            >
               Home
             </Link>
             <Link
               href="/about"
-              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
+              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
             >
               About
             </Link>
             <Link
               href="/services"
-              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
+              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
             >
               Services
             </Link>
             <Link
               href="/contact"
-              className="dark:hover:bg-secondaryDark hover:bg-primaryAccent px-3 py-2 rounded-md"
+              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
             >
               Contact
             </Link>
@@ -70,7 +66,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <hr className="hidden ml-20 mr-20 dark:visible" />
+      <hr className="mx-20 hidden dark:visible" />
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (

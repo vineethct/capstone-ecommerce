@@ -6,3 +6,14 @@
     --radius: 0.5rem;
   }
 }
+
+._container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh; /* Full viewport height */
+}
+
+._section {
+  scroll-snap-align: start;
+  height: 100vh; /* Full viewport height for each section */
+}

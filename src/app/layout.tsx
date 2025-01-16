@@ -15,17 +15,17 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode,
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${rubik.className} antialiased`}>
-        {/* <Theme> */}
-        <Providers>
-          <NavBar />
-          {children}
-        </Providers>
-        {/* </Theme> */}
+      <body className={`${rubik.className} relative antialiased`}>
+        <Theme>
+          <Providers>
+            <NavBar />
+            {children}
+          </Providers>
+        </Theme>
       </body>
     </html>
   );
