@@ -1,0 +1,95 @@
+{
+    "data": {
+      "collection": {
+        "id": "gid://shopify/Collection/488318959914",
+        "title": "Recommended",
+        "products": {
+          "nodes": [
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678300184874",
+              "title": "Lego 2016 Sergeant Jyn Erso",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_53_image1.jpg?v=1737095090"
+                  }
+                ]
+              }
+            },
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678300119338",
+              "title": "LEGO Bumblebee Helicopter",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_52_image1.jpg?v=1737095088"
+                  }
+                ]
+              }
+            },
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678299955498",
+              "title": "LEGO Mobile Command Center",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_44_image1.jpg?v=1737095083"
+                  }
+                ]
+              }
+            },
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678299889962",
+              "title": "Lego Super Heroes Attack on Avengers Tower",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_43_image1.jpg?v=1737095082"
+                  }
+                ]
+              }
+            },
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678300217642",
+              "title": "Lego Captain Phasma",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_54_image1.png?v=1737095091"
+                  }
+                ]
+              }
+            },
+            {
+              "category": null,
+              "id": "gid://shopify/Product/9678300086570",
+              "title": "LEGO Juniors",
+              "images": {
+                "nodes": [
+                  {
+                    "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_51_image1.jpg?v=1737095087"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "extensions": {
+      "cost": {
+        "requestedQueryCost": 18,
+        "actualQueryCost": 18,
+        "throttleStatus": {
+          "maximumAvailable": 2000,
+          "currentlyAvailable": 1982,
+          "restoreRate": 100
+        }
+      }
+    }
+  }

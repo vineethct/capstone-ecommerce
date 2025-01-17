@@ -26,7 +26,7 @@ const VideoBackground = () => {
         className="absolute inset-0 flex items-center justify-center"
       >
         <Image src={logo} alt="logo" className="size-12 md:size-24 " />
-        <h1 className="text-6xl font-bold text-white md:text-8xl ">Shopify</h1>
+        <h1 className="text-6xl font-bold text-white md:text-8xl ">JoyBox</h1>
       </motion.div>
 
       {/* <div className="absolute top-[6%] md:top-1/4 inset-0  bg-opacity-50 ml-8">

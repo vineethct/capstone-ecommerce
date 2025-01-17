@@ -1,9 +1,22 @@
 "use client";
+import { IProducts, getProducts } from "@/data/shopify/queries/products";
 import useNavbarHeight from "@/store/navbar-store";
 import * as motion from "motion/react-client";
+import { useEffect, useState } from "react";
+
+const fetchProducts = async () => {
+  return getProducts();
+};
 
 const Recommendations = () => {
   const { height: navBarHeight } = useNavbarHeight();
+  const [products, setProducts] = useState<IProducts>();
+
+  useEffect(() => {
+    // fetchProducts().then((data) => {
+    //   setProducts(data);
+    // });
+  }, []);
 
   return (
     <motion.div
