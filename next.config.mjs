@@ -7,7 +7,10 @@ jiti("./src/env");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  images: {
+    domains: ["cdn.shopify.com"], // Add the allowed hostname here
+  },
 };
 
 export default nextConfig;

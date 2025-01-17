@@ -1,0 +1,75 @@
+{
+  "data": {
+    "collection": {
+      "id": "gid://shopify/Collection/488318959914",
+      "title": "Recommended",
+      "products": {
+        "nodes": [
+          {
+            "category": null,
+            "id": "gid://shopify/Product/9678300184874",
+            "title": "Lego 2016 Sergeant Jyn Erso",
+            "description": "Help the Rebel Alliance take on the Empire with this buildable and highly posable Jyn Erso figure.",
+            "images": {
+              "nodes": [
+                {
+                  "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_53_image1.jpg?v=1737095090"
+                }
+              ]
+            }
+          },
+          {
+            "category": null,
+            "id": "gid://shopify/Product/9678300119338",
+            "title": "LEGO Bumblebee Helicopter",
+            "description": "Includes a Bumblebee mini-doll figure, plus two angry red Kryptomites. Features a helicopter with opening cockpit, spinning rotors, zipline, two stud shooters and storage space in the back to hold the crystals",
+            "images": {
+              "nodes": [
+                {
+                  "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_52_image1.jpg?v=1737095088"
+                }
+              ]
+            }
+          },
+          {
+            "category": null,
+            "id": "gid://shopify/Product/9678299955498",
+            "title": "LEGO Mobile Command Center",
+            "description": "LEGO Mobile Command Center",
+            "images": {
+              "nodes": [
+                {
+                  "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_44_image1.jpg?v=1737095083"
+                }
+              ]
+            }
+          },
+          {
+            "category": null,
+            "id": "gid://shopify/Product/9678299889962",
+            "title": "Lego Super Heroes Attack on Avengers Tower",
+            "description": "The Heroes are having a party when suddenly Avengers Tower comes under Ultron attack from the inside! Evil Ultron Mark 1 has assembled himself in the lab and is exploding out the windows.",
+            "images": {
+              "nodes": [
+                {
+                  "url": "https://cdn.shopify.com/s/files/1/0919/1286/4042/files/product_43_image1.jpg?v=1737095082"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "extensions": {
+    "cost": {
+      "requestedQueryCost": 18,
+      "actualQueryCost": 18,
+      "throttleStatus": {
+        "maximumAvailable": 2000,
+        "currentlyAvailable": 1894,
+        "restoreRate": 100
+      }
+    }
+  }
+}
