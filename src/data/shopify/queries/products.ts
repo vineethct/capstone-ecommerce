@@ -38,6 +38,7 @@ export interface IProductsByCollection{
     products: {
       nodes: IProduct[],
     },
+    description:string;
   },
 }
 
@@ -74,7 +75,8 @@ query GetProductsByCollection {
   collection(id: "gid://shopify/Collection/${collectionId}") {
     id
     title
-    products(first: 6) {
+    description
+    products(first: 20) {
       nodes {
         id
         title

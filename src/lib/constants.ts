@@ -11,7 +11,7 @@ const PAGE_ROUTES = {
   HOME: "/",
   LEGO: `/collection/${COLLECTION_ID.LEGO}`,
   HOT_WHEELS: `/collection/${COLLECTION_ID.HOT_WHEELS}`,
-  DISNEY: `/collection/disney/${COLLECTION_ID.DISNEY}`,
+  DISNEY: `/collection/${COLLECTION_ID.DISNEY}`,
 };
 
 export { transparentBase64, PAGE_ROUTES, COLLECTION_ID };

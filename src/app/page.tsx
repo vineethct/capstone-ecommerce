@@ -38,7 +38,6 @@ export default function Home() {
 
       {/* SECTION - 4 */}
       <DisneyLanding scrollYProgress={scrollYProgress} />
-
     </motion.div>
   );
 }

@@ -58,25 +58,7 @@ const NavBar = () => {
               href="/"
               className="rounded-md px-3 py-2 hover:bg-primaryAccent"
             >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
-            >
-              About
-            </Link>
-            <Link
-              href="/services"
-              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
-            >
-              Services
-            </Link>
-            <Link
-              href="/contact"
-              className=" rounded-md px-3 py-2 hover:bg-primaryAccent"
-            >
-              Contact
+              Browse
             </Link>
 
             <ThemeSwitchButton />
