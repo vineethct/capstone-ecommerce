@@ -17,9 +17,9 @@ const Recommendations = () => {
   const [products, setProducts] = useState<IRecommendedProducts>();
 
   useEffect(() => {
-    // fetchProducts().then((data) => {
-    //   setProducts(data);
-    // });
+    fetchProducts().then((data) => {
+      setProducts(data);
+    });
 
     setProducts(dummyProducts);
     // console.log(dummyProducts);

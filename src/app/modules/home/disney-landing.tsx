@@ -1,18 +1,19 @@
 "use client";
+import useNavbarHeight from "@/store/navbar-store";
 import Image from "next/image";
-import legoLogo from "@/assets/lego.webp";
+import disneyLogo from "@/assets/disney.webp";
 import { Button } from "@/components/ui/button";
 import { motion, MotionValue, useTransform } from "motion/react";
 import { useRef } from "react";
+import { mouseMemoirs } from "@/components/ui/fonts";
 import { useRouter } from "next/navigation";
-import useNavbarHeight from "@/store/navbar-store";
 import { COLLECTION_ID, PAGE_ROUTES } from "@/lib/constants";
 
-interface LegoLandingProps {
+interface DisneyLandingProps {
   scrollYProgress: MotionValue<number>;
 }
 
-const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
+const DisneyLanding = ({ scrollYProgress }: DisneyLandingProps) => {
   const { height: navBarHeight } = useNavbarHeight();
   const router = useRouter();
 
@@ -20,7 +21,7 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
 
   const imageTranslateY = useTransform(
     scrollYProgress,
-    [0, 0.32],
+    [0.62, 1],
     ["400px", "0px"]
   );
 
@@ -33,16 +34,16 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
     >
       {/* Text  */}
       <motion.div className="md:w-1/3">
-        <p className="text-4xl font-bold italic md:text-8xl">{`LEGO`}</p>
-        <p className="mt-5 text-2xl italic md:text-3xl">
-          {`Build iconic designs with LEGO's premium sets, crafted for unmatched
-            detail and durability.`}
+        <p
+          className={`${mouseMemoirs.className} text-4xl font-bold italic md:text-6xl`}
+        >{`DISNEY`}</p>
+        <p className="mt-2 text-2xl italic md:text-3xl">
+          {`Bring the magic of Disney to life with enchanting toys featuring beloved characters, perfect for kids and collectors alike.`}
         </p>
         <Button
-          id="#lego-landing"
           className="mt-4"
           onClick={() => {
-            router.push(PAGE_ROUTES.LEGO);
+            router.push(PAGE_ROUTES.DISNEY);
           }}
         >
           Explore
@@ -58,10 +59,14 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
         transition={{ duration: 0.8 }}
         style={{ translateY: imageTranslateY }}
       >
-        <Image src={legoLogo} alt="lego logo" className="w-4/5 rounded-lg" />
+        <Image
+          src={disneyLogo}
+          alt="disney logo"
+          className="w-4/5 rounded-lg"
+        />
       </motion.div>
     </section>
   );
 };
 
-export default LegoLanding;
+export default DisneyLanding;

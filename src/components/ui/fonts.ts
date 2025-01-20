@@ -1,4 +1,12 @@
-import { Inter, Lusitana, Rubik, Poppins, Fredoka } from "next/font/google";
+import {
+  Inter,
+  Lusitana,
+  Rubik,
+  Poppins,
+  Fredoka,
+  Racing_Sans_One,
+  Mouse_Memoirs,
+} from "next/font/google";
 
 export const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +32,18 @@ export const poppins = Poppins({
 export const fredoka = Fredoka({
   weight: ["400", "500", "700"],
   // variable: "--font-fredoka",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const racingSans = Racing_Sans_One({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const mouseMemoirs = Mouse_Memoirs({
+  weight: ["400"],
   subsets: ["latin"],
   display: "swap",
 });

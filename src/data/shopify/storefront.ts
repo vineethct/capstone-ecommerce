@@ -11,5 +11,5 @@ export const fetchShopify = async (query: string, variables = {}) => {
   });
 
   const json: any = await response.json();
-  return json.data;
+  return json;
 };

@@ -9,6 +9,8 @@ import {
   motion,
   useTransform,
 } from "motion/react";
+import HotWheelsLanding from "./modules/home/hotwheels-landing";
+import DisneyLanding from "./modules/home/disney-landing";
 
 export default function Home() {
   const homeRef = useRef(null);
@@ -18,10 +20,9 @@ export default function Home() {
     // offset : ["33% 66%","66% 99%"]
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) =>
-    console.log(latest, "latest")
-  );
-
+  // useMotionValueEvent(scrollYProgress, "change", (value) => {
+  //   console.log(value);
+  // });
   // const legoTitleStyle = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
@@ -33,7 +34,11 @@ export default function Home() {
       <LegoLanding scrollYProgress={scrollYProgress} />
 
       {/* SECTION - 3 */}
-      <HomeLanding />
+      <HotWheelsLanding scrollYProgress={scrollYProgress} />
+
+      {/* SECTION - 4 */}
+      <DisneyLanding scrollYProgress={scrollYProgress} />
+
     </motion.div>
   );
 }

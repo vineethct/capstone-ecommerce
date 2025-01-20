@@ -14,6 +14,7 @@ const ThemeSwitchButton = () => {
 
   useEffect(() => {
     setMounted(true);
+    setTheme("dark");
   }, []);
 
   if (!mounted) {

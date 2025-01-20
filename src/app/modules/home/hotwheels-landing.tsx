@@ -1,18 +1,19 @@
 "use client";
+import useNavbarHeight from "@/store/navbar-store";
 import Image from "next/image";
-import legoLogo from "@/assets/lego.webp";
+import hotwheelsLogo from "@/assets/hotwheels.webp";
 import { Button } from "@/components/ui/button";
 import { motion, MotionValue, useTransform } from "motion/react";
 import { useRef } from "react";
+import { racingSans } from "@/components/ui/fonts";
 import { useRouter } from "next/navigation";
-import useNavbarHeight from "@/store/navbar-store";
 import { COLLECTION_ID, PAGE_ROUTES } from "@/lib/constants";
 
-interface LegoLandingProps {
+interface HotWheelsLandingProps {
   scrollYProgress: MotionValue<number>;
 }
 
-const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
+const HotWheelsLanding = ({ scrollYProgress }: HotWheelsLandingProps) => {
   const { height: navBarHeight } = useNavbarHeight();
   const router = useRouter();
 
@@ -20,7 +21,7 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
 
   const imageTranslateY = useTransform(
     scrollYProgress,
-    [0, 0.32],
+    [0.32, 0.62],
     ["400px", "0px"]
   );
 
@@ -33,16 +34,16 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
     >
       {/* Text  */}
       <motion.div className="md:w-1/3">
-        <p className="text-4xl font-bold italic md:text-8xl">{`LEGO`}</p>
-        <p className="mt-5 text-2xl italic md:text-3xl">
-          {`Build iconic designs with LEGO's premium sets, crafted for unmatched
-            detail and durability.`}
+        <p
+          className={`${racingSans.className} text-4xl font-bold italic md:text-6xl`}
+        >{`HOTWHEELS`}</p>
+        <p className="mt-2 text-2xl italic md:text-3xl">
+          {`Discover premium Hot Wheels collectibles and race-ready cars for every enthusiast.`}
         </p>
         <Button
-          id="#lego-landing"
           className="mt-4"
           onClick={() => {
-            router.push(PAGE_ROUTES.LEGO);
+            router.push(PAGE_ROUTES.HOT_WHEELS);
           }}
         >
           Explore
@@ -58,10 +59,14 @@ const LegoLanding = ({ scrollYProgress }: LegoLandingProps) => {
         transition={{ duration: 0.8 }}
         style={{ translateY: imageTranslateY }}
       >
-        <Image src={legoLogo} alt="lego logo" className="w-4/5 rounded-lg" />
+        <Image
+          src={hotwheelsLogo}
+          alt="hotwheels logo"
+          className="w-4/5 rounded-lg"
+        />
       </motion.div>
     </section>
   );
 };
 
-export default LegoLanding;
+export default HotWheelsLanding;

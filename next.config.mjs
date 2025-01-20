@@ -9,7 +9,12 @@ jiti("./src/env");
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["cdn.shopify.com"], // Add the allowed hostname here
+remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+      },
+    ], 
   },
 };
 

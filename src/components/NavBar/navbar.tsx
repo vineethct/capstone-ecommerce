@@ -6,12 +6,15 @@ import Image from "next/image";
 import logo from "@/assets/online-shopping.png";
 import HamburgerIcon from "@/assets/hamburger";
 import useNavbarHeight from "@/store/navbar-store";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const NavBar = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen] = useState(false);
 
   const { setHeight } = useNavbarHeight();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!navRef.current) return;
@@ -21,10 +24,12 @@ const NavBar = () => {
   return (
     <nav
       ref={navRef}
-      className="absolute top-0 z-[1] w-full bg-opacity-0 shadow-lg dark:bg-black"
+      className={clsx("top-0 z-[1] w-full bg-white shadow-lg dark:bg-black", {
+        absolute: pathname === "/",
+      })}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className=" flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="shrink-0">
             <Link
@@ -32,7 +37,7 @@ const NavBar = () => {
               className="flex items-center gap-2 text-2xl font-bold"
             >
               <Image src={logo} alt="logo" className="size-12 md:size-8 " />
-              <h5 className="text-white">JoyBox</h5>
+              <h5 className="">JoyBox</h5>
             </Link>
           </div>
 
@@ -41,14 +46,14 @@ const NavBar = () => {
             <button
               // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               onClick={() => {}}
-              className="text-white focus:outline-none"
+              className=" focus:outline-none"
             >
               <HamburgerIcon />
             </button>
           </div>
 
           {/* Navigation links */}
-          <div className="hidden text-white lg:flex lg:space-x-4">
+          <div className="hidden  lg:flex lg:space-x-4">
             <Link
               href="/"
               className="rounded-md px-3 py-2 hover:bg-primaryAccent"
