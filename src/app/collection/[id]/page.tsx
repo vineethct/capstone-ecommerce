@@ -2,13 +2,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-import {
-  IProductsByCollection,
-  getProductsByCollection,
-} from "@/data/shopify/queries/products";
-import { Button } from "@/components/ui/button";
+import { getProductsByCollection } from "@/data/shopify/products/products";
+import { IProductsByCollection } from "@/data/shopify/products/interfaces";
 import ProductsFromCollectionSekeleton from "./skeleton";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const Products = () => {
   const { id }: { id: string } = useParams();
@@ -49,7 +47,7 @@ const Products = () => {
               {collection?.collection.products.nodes.map((product) => (
                 <div
                   key={product.id}
-                  className="overflow-hidden rounded-lg bg-[#ededed] shadow-lg dark:bg-[#333]"
+                  className="overflow-hidden rounded-lg bg-[#ededed] shadow-lg dark:bg-blackAccent"
                 >
                   <Image
                     src={product.images.nodes[0].url}

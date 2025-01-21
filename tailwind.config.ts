@@ -16,6 +16,7 @@ const config: Config = {
         secondary: "#f7b801",
         secondaryAccent: "#f18701",
         tertiary: "#f35b04",
+        blackAccent: "#333",
       },
     },
   },
