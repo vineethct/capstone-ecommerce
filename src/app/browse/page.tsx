@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -9,6 +9,8 @@ import { getProductsBySearch } from "@/data/shopify/products/products";
 import { IProduct } from "@/data/shopify/products/interfaces";
 import ProductsFromCollectionSekeleton from "../collection/[id]/skeleton";
 import { Spinner } from "@radix-ui/themes";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useDebouncedCallback } from 'use-debounce';
 
 type PageInfo = {
   hasNextPage: boolean,
@@ -16,15 +18,24 @@ type PageInfo = {
 };
 
 const BrowseProducts = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [inputString, setInputString] = useState<string>("");
   const [pageInfo, setPageInfo] = useState<PageInfo>({
     hasNextPage: false,
     endCursor: undefined,
   });
   const [loading, setLoading] = useState(false);
 
-  const fetchProductsByCollectionId = () => {
+  useEffect(()=>{
+    const searchString = searchParams.get("search")?.toString()
+    fetchProductsByCollectionId(searchString || "")
+  },[])
+
+  const fetchProductsByCollectionId = (inputString : string) => {
     getProductsBySearch(pageInfo.endCursor, inputString).then((data) => {
       const newProducts: IProduct[] = data.data;
       setProducts((prev) => [...prev, ...newProducts]);
@@ -33,13 +44,18 @@ const BrowseProducts = () => {
     });
   };
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSearch = useDebouncedCallback((inputString: HTMLInputElement["value"]) => {
+
+    //update address
+    const params = new URLSearchParams(searchParams);
+    params.set("search", inputString || "");
+    replace(`${pathname}?${params.toString()}`);
+
     setLoading(() => true);
     setProducts([]); // Clear existing products
     setPageInfo({ hasNextPage: false, endCursor: undefined }); // Reset pagination
-    fetchProductsByCollectionId();
-  };
+    fetchProductsByCollectionId(inputString);
+  },500);
 
   return (
     <div className="p-5">
@@ -47,13 +63,14 @@ const BrowseProducts = () => {
         {`Browse Products`}
       </h3>
 
-      <form onSubmit={handleSearch} className=" mt-6 flex max-w-md ">
+      <div className=" mt-6 flex max-w-md ">
         <Input
-          value={inputString}
-          onChange={(e) => setInputString(e.target.value)}
+          ref={inputRef}
+          onChange={(e) => handleSearch(e.target.value)}
           type="search"
           placeholder="Search..."
           className="rounded-r-none"
+          defaultValue={searchParams.get("search")?.toString()}
         />
         <Button
           type="submit"
@@ -62,15 +79,15 @@ const BrowseProducts = () => {
         >
           <FaMagnifyingGlass className="size-4" />
         </Button>
-      </form>
+      </div>
 
       <div className="py-6">
         <InfiniteScroll
           pageStart={0}
-          loadMore={fetchProductsByCollectionId}
+          loadMore={()=>fetchProductsByCollectionId(inputRef.current?.value || "")}
           hasMore={pageInfo.hasNextPage}
           loader={
-            <div key={0}>
+            <div key={0} className="mt-5">
               <Spinner size="3" />
             </div>
           }
@@ -111,7 +128,7 @@ const BrowseProducts = () => {
 
         {!pageInfo.hasNextPage && products.length > 0 && (
           <div className="mt-6 text-center text-gray-500">
-            {`You've reached the end of the product list.`}
+            {`You've reached the end of the list.`}
           </div>
         )}
       </div>

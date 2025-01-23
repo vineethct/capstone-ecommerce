@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { transparentBase64 } from "@/lib/constants";
+import { Button } from "./button";
 
 const ThemeSwitchButton = () => {
   const [mounted, setMounted] = useState(false);
@@ -33,17 +34,27 @@ const ThemeSwitchButton = () => {
 
   if (resolvedTheme === "dark") {
     return (
-      <div className="flex items-center">
-        <FiSun className="cursor-pointer" onClick={() => setTheme("light")} />
-      </div>
+      <Button
+        variant={"ghost"}
+        size={"sm"}
+        className="flex items-center hover:bg-blackAccent hover:text-white"
+        onClick={() => setTheme("light")}
+      >
+        <FiSun className="size-3 cursor-pointer" />
+      </Button>
     );
   }
 
   if (resolvedTheme === "light") {
     return (
-      <div className="flex items-center">
-        <FiMoon className="cursor-pointer" onClick={() => setTheme("dark")} />
-      </div>
+      <Button
+        variant={"ghost"}
+        size={"sm"}
+        className="flex items-center hover:bg-blackAccent hover:text-white"
+        onClick={() => setTheme("dark")}
+      >
+        <FiMoon className="size-3 cursor-pointer " />
+      </Button>
     );
   }
 };
