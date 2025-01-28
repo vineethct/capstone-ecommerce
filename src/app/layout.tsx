@@ -4,7 +4,6 @@ import { Theme } from "@radix-ui/themes";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { fredoka } from "@/components/ui/fonts";
-import NavBar from "@/components/NavBar/navbar";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function RootLayout({
       <body className={`${fredoka.className} relative antialiased`}>
         <Theme>
           <Providers>
-            <NavBar />
             {children}
           </Providers>
         </Theme>

@@ -37,7 +37,7 @@ const NavBar = () => {
               className="flex items-center gap-2 text-2xl font-bold"
             >
               <Image src={logo} alt="logo" className="size-12 md:size-8 " />
-              <h5 className="">JoyBox</h5>
+              <h5 className="">Joybox</h5>
             </Link>
           </div>
 

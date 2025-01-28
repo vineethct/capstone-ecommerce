@@ -1,16 +1,13 @@
 "use client";
 import { useRef } from "react";
-import HomeLanding from "./modules/home/landing";
-import LegoLanding from "./modules/home/lego-landing";
-import Recommendations from "./modules/home/recommendation";
+import HomeLanding from "../(modules)/home/landing";
+import LegoLanding from "../(modules)/home/lego-landing";
 import {
-  useMotionValueEvent,
   useScroll,
   motion,
-  useTransform,
 } from "motion/react";
-import HotWheelsLanding from "./modules/home/hotwheels-landing";
-import DisneyLanding from "./modules/home/disney-landing";
+import HotWheelsLanding from "../(modules)/home/hotwheels-landing";
+import DisneyLanding from "../(modules)/home/disney-landing";
 
 export default function Home() {
   const homeRef = useRef(null);

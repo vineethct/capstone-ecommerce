@@ -15,7 +15,6 @@ const ThemeSwitchButton = () => {
 
   useEffect(() => {
     setMounted(true);
-    setTheme("dark");
   }, []);
 
   if (!mounted) {
@@ -39,6 +38,7 @@ const ThemeSwitchButton = () => {
         size={"sm"}
         className="flex items-center hover:bg-blackAccent hover:text-white"
         onClick={() => setTheme("light")}
+        aria-label="switch to light mode"
       >
         <FiSun className="size-3 cursor-pointer" />
       </Button>
@@ -52,6 +52,7 @@ const ThemeSwitchButton = () => {
         size={"sm"}
         className="flex items-center hover:bg-blackAccent hover:text-white"
         onClick={() => setTheme("dark")}
+        aria-label="switch to dark mode"
       >
         <FiMoon className="size-3 cursor-pointer " />
       </Button>
