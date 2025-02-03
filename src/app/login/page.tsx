@@ -29,7 +29,7 @@ const Login = () => {
       const result = await authHandler.login(data);
       router.push(PAGE_ROUTES.HOME);
     } catch (error: any) {
-      console.log(error, "FIREBASE ERROR");
+      alert(error.message);
     }
   };
 

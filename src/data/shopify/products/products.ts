@@ -37,12 +37,6 @@ export const getProductsBySearch = async (
   const result = await fetchShopify(query, variables);
   const edges = result.data.products.edges;
 
-  console.log({
-    data: edges.map((edge: any) => edge.node),
-    cursor: result.data.products.pageInfo.endCursor,
-    hasNextPage: result.data.products.pageInfo.hasNextPage,
-  });
-
   return {
     data: edges.map((edge: { node: IProduct }) => edge.node),
     cursor: result.data.products.pageInfo.endCursor,
