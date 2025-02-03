@@ -2,14 +2,12 @@
 import { useRef } from "react";
 import HomeLanding from "../(modules)/home/landing";
 import LegoLanding from "../(modules)/home/lego-landing";
-import {
-  useScroll,
-  motion,
-} from "motion/react";
+import { useScroll, motion } from "motion/react";
 import HotWheelsLanding from "../(modules)/home/hotwheels-landing";
 import DisneyLanding from "../(modules)/home/disney-landing";
+import withAuth from "@/context/AuthContext/with-auth-hoc";
 
-export default function Home() {
+const Home = () => {
   const homeRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -37,4 +35,6 @@ export default function Home() {
       <DisneyLanding scrollYProgress={scrollYProgress} />
     </motion.div>
   );
-}
+};
+
+export default Home;

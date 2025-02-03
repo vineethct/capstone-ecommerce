@@ -5,9 +5,10 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { fredoka } from "@/components/ui/fonts";
 import Providers from "./providers";
+import { AuthProvider } from "@/context/AuthContext/auth-context";
 
 export const metadata: Metadata = {
-  title: "E-shop",
+  title: "Joybox",
   description: "C&T Next.js starter template",
 };
 
@@ -19,11 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fredoka.className} relative antialiased`}>
-        <Theme>
-          <Providers>
-            {children}
-          </Providers>
-        </Theme>
+        <AuthProvider>
+          <Theme>
+            <Providers>{children}</Providers>
+          </Theme>
+        </AuthProvider>
       </body>
     </html>
   );

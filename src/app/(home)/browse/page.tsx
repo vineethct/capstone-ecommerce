@@ -10,7 +10,8 @@ import { IProduct } from "@/data/shopify/products/interfaces";
 import ProductsFromCollectionSekeleton from "../collection/[id]/skeleton";
 import { Spinner } from "@radix-ui/themes";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { useDebouncedCallback } from 'use-debounce';
+import { useDebouncedCallback } from "use-debounce";
+import withAuth from "@/context/AuthContext/with-auth-hoc";
 
 type PageInfo = {
   hasNextPage: boolean,
@@ -18,7 +19,7 @@ type PageInfo = {
 };
 
 const BrowseProducts = () => {
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -30,12 +31,12 @@ const BrowseProducts = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  useEffect(()=>{
-    const searchString = searchParams.get("search")?.toString()
-    fetchProductsByCollectionId(searchString || "")
-  },[])
+  useEffect(() => {
+    const searchString = searchParams.get("search")?.toString();
+    fetchProductsByCollectionId(searchString || "");
+  }, []);
 
-  const fetchProductsByCollectionId = (inputString : string) => {
+  const fetchProductsByCollectionId = (inputString: string) => {
     getProductsBySearch(pageInfo.endCursor, inputString).then((data) => {
       const newProducts: IProduct[] = data.data;
       setProducts((prev) => [...prev, ...newProducts]);
@@ -44,18 +45,20 @@ const BrowseProducts = () => {
     });
   };
 
-  const handleSearch = useDebouncedCallback((inputString: HTMLInputElement["value"]) => {
+  const handleSearch = useDebouncedCallback(
+    (inputString: HTMLInputElement["value"]) => {
+      //update address
+      const params = new URLSearchParams(searchParams);
+      params.set("search", inputString || "");
+      replace(`${pathname}?${params.toString()}`);
 
-    //update address
-    const params = new URLSearchParams(searchParams);
-    params.set("search", inputString || "");
-    replace(`${pathname}?${params.toString()}`);
-
-    setLoading(() => true);
-    setProducts([]); // Clear existing products
-    setPageInfo({ hasNextPage: false, endCursor: undefined }); // Reset pagination
-    fetchProductsByCollectionId(inputString);
-  },500);
+      setLoading(() => true);
+      setProducts([]); // Clear existing products
+      setPageInfo({ hasNextPage: false, endCursor: undefined }); // Reset pagination
+      fetchProductsByCollectionId(inputString);
+    },
+    500
+  );
 
   return (
     <div className="p-5">
@@ -84,7 +87,9 @@ const BrowseProducts = () => {
       <div className="py-6">
         <InfiniteScroll
           pageStart={0}
-          loadMore={()=>fetchProductsByCollectionId(inputRef.current?.value || "")}
+          loadMore={() =>
+            fetchProductsByCollectionId(inputRef.current?.value || "")
+          }
           hasMore={pageInfo.hasNextPage}
           loader={
             <div key={0} className="mt-5">
