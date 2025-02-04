@@ -4,8 +4,9 @@ import { Theme } from "@radix-ui/themes";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { fredoka } from "@/components/ui/fonts";
-import Providers from "./providers";
-import { AuthProvider } from "@/context/AuthContext/auth-context";
+import Providers from "./(hoc)/providers";
+import AuthCheck from "./(hoc)/auth-check";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Joybox",
@@ -17,14 +18,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode,
 }>) {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fredoka.className} relative antialiased`}>
-        <AuthProvider>
-          <Theme>
+        <Theme>
+          <AuthCheck token={token?.value}>
             <Providers>{children}</Providers>
-          </Theme>
-        </AuthProvider>
+          </AuthCheck>
+        </Theme>
       </body>
     </html>
   );

@@ -5,10 +5,12 @@ import LegoLanding from "../(modules)/home/lego-landing";
 import { useScroll, motion } from "motion/react";
 import HotWheelsLanding from "../(modules)/home/hotwheels-landing";
 import DisneyLanding from "../(modules)/home/disney-landing";
-import withAuth from "@/context/AuthContext/with-auth-hoc";
+import { useUserCookieStore } from "@/store/user-cookie-store";
 
 const Home = () => {
   const homeRef = useRef(null);
+
+  const { decoded } = useUserCookieStore();
 
   const { scrollYProgress } = useScroll({
     container: homeRef,

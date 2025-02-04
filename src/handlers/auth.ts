@@ -25,14 +25,15 @@ class AuthHandler {
       const token = await result.user.getIdToken();
 
       Cookies.set("token", token, {
-        path: "/",
-        secure: true,
-        sameSite: "Strict",
-        httpOnly: false, // Can't be used in API routes, prefer setting it on the server
+        expires: 1, // Expiry in days
+        path: "/", // Cookie will be available for the entire domain
+        secure: process.env.NODE_ENV === "production", // Ensure secure cookies in production
+        sameSite: "Strict", // Helps to prevent CSRF
       });
 
       return result;
     } catch (error: any) {
+      // console.log(error, "error");
       throw new Error(error);
     }
   }
