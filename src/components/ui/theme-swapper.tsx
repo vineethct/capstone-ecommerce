@@ -36,10 +36,11 @@ const ThemeSwitchButton = () => {
       <Button
         variant={"ghost"}
         size={"sm"}
-        className="flex items-center hover:bg-blackAccent hover:text-white"
+        className="flex items-center  hover:bg-blackAccent hover:text-white"
         onClick={() => setTheme("light")}
         aria-label="switch to light mode"
       >
+        <p>Switch to Light Theme</p>
         <FiSun className="size-3 cursor-pointer" />
       </Button>
     );
@@ -54,6 +55,7 @@ const ThemeSwitchButton = () => {
         onClick={() => setTheme("dark")}
         aria-label="switch to dark mode"
       >
+        <p>Switch to Dark Theme</p>
         <FiMoon className="size-3 cursor-pointer " />
       </Button>
     );

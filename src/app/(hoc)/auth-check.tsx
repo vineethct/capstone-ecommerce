@@ -2,7 +2,7 @@
 import { verifyToken } from "@/services/jwt";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useUserCookieStore } from "@/store/user-cookie-store";
+import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 import { PAGE_ROUTES } from "@/lib/constants";
 
 const AuthCheck = ({
@@ -21,8 +21,12 @@ const AuthCheck = ({
       try {
         const authUser = await verifyToken(token || "");
         if (authUser) {
+          const user: IUser = {
+            email: authUser?.payload?.email?.toString() || "",
+            uid: authUser?.payload?.user_id?.toString() || "",
+          };
           setUserToken(token);
-          setDecoded(authUser.payload);
+          setDecoded(user);
         }
       } catch {
         setUserToken("");

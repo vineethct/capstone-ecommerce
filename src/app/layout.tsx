@@ -3,7 +3,7 @@ import { Theme } from "@radix-ui/themes";
 
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import { fredoka } from "@/components/ui/fonts";
+import { poppins } from "@/components/ui/fonts";
 import Providers from "./(hoc)/providers";
 import AuthCheck from "./(hoc)/auth-check";
 import { cookies } from "next/headers";
@@ -23,7 +23,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fredoka.className} relative antialiased`}>
+      <body className={`${poppins.className} relative antialiased`}>
         <Theme>
           <AuthCheck token={token?.value}>
             <Providers>{children}</Providers>

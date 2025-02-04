@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { PAGE_ROUTES } from "@/lib/constants";
 import { useState } from "react";
 import { Spinner } from "@radix-ui/themes";
+import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 
 type IFormInput = {
   email: string,
@@ -24,6 +25,7 @@ type IFormInput = {
 const Login = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<IFormInput>();
+  const { setDecoded } = useUserCookieStore();
   const authHandler = new AuthHandler();
 
   const [loading, setLoading] = useState(false);
@@ -32,6 +34,14 @@ const Login = () => {
     try {
       setLoading(true);
       const result = await authHandler.login(data);
+
+      const user: IUser = {
+        email: result?.user?.email?.toString() || "",
+        uid: result?.user?.uid?.toString() || "",
+      };
+
+      setDecoded(user);
+
       router.push(PAGE_ROUTES.HOME);
     } catch (error: any) {
       alert(error.message);

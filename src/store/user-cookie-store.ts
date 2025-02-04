@@ -1,12 +1,16 @@
 import { create } from "zustand";
 import Cookies from "js-cookie";
-import * as jose from "jose";
+
+export interface IUser {
+  email: string;
+  uid: string;
+}
 
 interface IUserCookieStore {
   userToken: string | null | undefined;
-  decoded: jose.JWTPayload | null | undefined;
+  decoded: IUser | null | undefined;
   setUserToken: (token: string | null | undefined) => void;
-  setDecoded: (user: jose.JWTPayload | null | undefined) => void;
+  setDecoded: (user: IUser | null | undefined) => void;
 }
 
 export const useUserCookieStore = create<IUserCookieStore>((set) => {
@@ -21,7 +25,7 @@ export const useUserCookieStore = create<IUserCookieStore>((set) => {
       set({ userToken: token });
     },
     decoded: undefined,
-    setDecoded: (user: jose.JWTPayload | null | undefined) => {
+    setDecoded: (user: IUser | null | undefined) => {
       set({ decoded: user });
     },
   };

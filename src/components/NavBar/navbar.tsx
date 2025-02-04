@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import ThemeSwitchButton from "../ui/theme-swapper";
 import Image from "next/image";
 import logo from "@/assets/online-shopping.png";
 import HamburgerIcon from "@/assets/hamburger";
 import useNavbarHeight from "@/store/navbar-store";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import Profile from "../Profile/profile";
 
 const NavBar = () => {
   const navRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ const NavBar = () => {
         absolute: pathname === "/",
       })}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className=" flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="shrink-0">
@@ -60,8 +60,7 @@ const NavBar = () => {
             >
               Browse
             </Link>
-
-            <ThemeSwitchButton />
+            <Profile />
           </div>
         </div>
       </div>
