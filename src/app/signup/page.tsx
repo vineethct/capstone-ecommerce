@@ -14,6 +14,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import AuthHandler from "@/handlers/auth";
 import { useRouter } from "next/navigation";
 import { PAGE_ROUTES } from "@/lib/constants";
+import Link from "next/link";
 
 interface IFormInput {
   email: string;
@@ -24,12 +25,16 @@ interface IFormInput {
 const Signup = () => {
   const authHandler = new AuthHandler();
   const router = useRouter();
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const { register, handleSubmit, watch } = useForm<IFormInput>();
   const [loading, setLoading] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
     setLoading(true);
+
     try {
+      if (data.password !== data.confirmPassword) {
+        throw new Error("Password mismatch");
+      }
       await authHandler.signup(data);
       router.replace(PAGE_ROUTES.LOGIN);
     } catch (error: any) {
@@ -52,24 +57,36 @@ const Signup = () => {
               aria-label="email"
               type="email"
               placeholder="Email"
-              {...register("email")}
+              {...register("email", {
+                required: true,
+              })}
             />
             <Input
               aria-label="password"
               type="password"
               placeholder="Password"
-              {...register("password")}
+              {...register("password", {
+                required: true,
+              })}
             />
 
             <Input
               aria-label="password"
               type="password"
               placeholder="Confirm Password"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", {
+                required: true,
+                validate: (val: string) => {
+                  if (watch("password") !== val) {
+                    return "Your passwords do no match";
+                  }
+                },
+              })}
             />
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex flex-col items-start gap-4">
             {loading ? <Spinner /> : <Button type="submit">Signup</Button>}
+            <Link href={PAGE_ROUTES.LOGIN}>Already have an account ?</Link>
           </CardFooter>
         </form>
       </Card>

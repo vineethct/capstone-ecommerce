@@ -16,6 +16,7 @@ import { PAGE_ROUTES } from "@/lib/constants";
 import { useState } from "react";
 import { Spinner } from "@radix-ui/themes";
 import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
+import Link from "next/link";
 
 interface IFormInput {
   email: string;
@@ -72,8 +73,9 @@ const Login = () => {
               {...register("password")}
             />
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex flex-col items-start gap-4">
             {loading ? <Spinner /> : <Button type="submit">Login</Button>}
+            <Link href={PAGE_ROUTES.SIGNUP}>Dont have an account ?</Link>
           </CardFooter>
         </form>
       </Card>
