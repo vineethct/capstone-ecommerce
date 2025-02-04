@@ -3,15 +3,20 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 import { getProductsByCollection } from "@/data/shopify/products/products";
-import { IProductsByCollection } from "@/data/shopify/products/interfaces";
+import {
+  IProduct,
+  IProductsByCollection,
+} from "@/data/shopify/products/interfaces";
 import ProductsFromCollectionSekeleton from "./skeleton";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { IItem, useCartStore } from "@/store/cart-store";
 
 const Products = () => {
   const { id }: { id: string } = useParams();
   const [collection, setCollection] = useState<IProductsByCollection>();
   const [loading, setLoading] = useState(true);
+  const { items, setItems } = useCartStore();
 
   useEffect(() => {
     if (id) {
@@ -26,6 +31,11 @@ const Products = () => {
       fetchProductsByCollectionId();
     }
   }, [id]);
+
+  const handleAddToCart = (product: IProduct) => {
+    const item: IItem = { product, count: 1 };
+    setItems([...items, item]);
+  };
 
   return (
     <div
@@ -67,7 +77,9 @@ const Products = () => {
                       <span className="text-xl font-bold ">
                         ₹{product.priceRange.maxVariantPrice.amount}
                       </span>
-                      <Button>Add to Cart</Button>
+                      <Button onClick={() => handleAddToCart(product)}>
+                        Add to Cart
+                      </Button>
                     </div>
                   </div>
                 </div>

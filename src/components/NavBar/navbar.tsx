@@ -56,7 +56,6 @@ const NavBar = () => {
           </div>
           {/* Navigation links */}
           <div className="hidden  lg:flex lg:items-center lg:space-x-2">
-            
             <Link
               href="/browse"
               className="rounded-md px-3 py-2  hover:bg-blackAccent hover:text-white"

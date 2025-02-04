@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { PAGE_ROUTES } from "@/lib/constants";
 
 const protectedRoutes = [PAGE_ROUTES.HOME, PAGE_ROUTES.BROWSE];
+export const openRoutes = new Set([
+  PAGE_ROUTES.LOGIN,
+  PAGE_ROUTES.SIGNUP,
+  PAGE_ROUTES.LOGOUT,
+]);
 
 export default async function middleware(
   req: NextRequest
@@ -9,11 +14,11 @@ export default async function middleware(
   const { pathname } = req.nextUrl; // Current request path
   const token = req.cookies.get("token")?.value || ""; // JWT from cookies
 
-  if (pathname === PAGE_ROUTES.LOGIN) {
-    if (token) {
-      return NextResponse.redirect(new URL(PAGE_ROUTES.HOME, req.url));
-    }
-    return NextResponse.next(); // Allow access to login page
+  if (openRoutes.has(pathname)) {
+    // if (token) {
+    //   return NextResponse.redirect(new URL(PAGE_ROUTES.HOME, req.url));
+    // }
+    return NextResponse.next();
   }
 
   // Check if the route is protected

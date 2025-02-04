@@ -14,6 +14,7 @@ const PAGE_ROUTES = {
   DISNEY: `/collection/${COLLECTION_ID.DISNEY}`,
   LOGIN: "/login",
   LOGOUT: "/logout",
+  SIGNUP: "/signup",
   BROWSE: "/browse",
 };
 

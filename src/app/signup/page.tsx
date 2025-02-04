@@ -1,51 +1,40 @@
 "use client";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Spinner } from "@radix-ui/themes";
+import { SubmitHandler, useForm } from "react-hook-form";
 import AuthHandler from "@/handlers/auth";
 import { useRouter } from "next/navigation";
 import { PAGE_ROUTES } from "@/lib/constants";
-import { useState } from "react";
-import { Spinner } from "@radix-ui/themes";
-import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 
 interface IFormInput {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-const Login = () => {
+const Signup = () => {
+  const authHandler = new AuthHandler();
   const router = useRouter();
   const { register, handleSubmit } = useForm<IFormInput>();
-  const { setDecoded } = useUserCookieStore();
-  const authHandler = new AuthHandler();
-
   const [loading, setLoading] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const result = await authHandler.login(data);
-
-      const user: IUser = {
-        email: result?.user?.email?.toString() || "",
-        uid: result?.user?.uid?.toString() || "",
-      };
-
-      setDecoded(user);
-
-      router.push(PAGE_ROUTES.HOME);
+      await authHandler.signup(data);
+      router.replace(PAGE_ROUTES.LOGIN);
     } catch (error: any) {
-      alert(error.message);
       setLoading(false);
+      alert(error.message);
     }
   };
 
@@ -55,7 +44,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardHeader>
             <CardTitle>
-              <h2 className="text-3xl">Welcome to Joybox</h2>
+              <h2 className="text-3xl">Register to Joybox</h2>
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
@@ -71,9 +60,16 @@ const Login = () => {
               placeholder="Password"
               {...register("password")}
             />
+
+            <Input
+              aria-label="password"
+              type="password"
+              placeholder="Confirm Password"
+              {...register("confirmPassword")}
+            />
           </CardContent>
           <CardFooter>
-            {loading ? <Spinner /> : <Button type="submit">Login</Button>}
+            {loading ? <Spinner /> : <Button type="submit">Signup</Button>}
           </CardFooter>
         </form>
       </Card>
@@ -81,4 +77,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

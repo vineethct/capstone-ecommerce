@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 import { PAGE_ROUTES } from "@/lib/constants";
+import { openRoutes } from "@/middleware";
 
 const AuthCheck = ({
   children,
@@ -34,8 +35,7 @@ const AuthCheck = ({
         router.replace(PAGE_ROUTES.LOGIN);
       }
     };
-    if (pathname !== PAGE_ROUTES.LOGIN && pathname !== PAGE_ROUTES.LOGOUT)
-      init();
+    if (!openRoutes.has(pathname)) init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
