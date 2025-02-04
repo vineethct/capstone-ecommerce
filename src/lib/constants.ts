@@ -13,6 +13,7 @@ const PAGE_ROUTES = {
   HOT_WHEELS: `/collection/${COLLECTION_ID.HOT_WHEELS}`,
   DISNEY: `/collection/${COLLECTION_ID.DISNEY}`,
   LOGIN: "/login",
+  LOGOUT: "/logout",
   BROWSE: "/browse",
 };
 

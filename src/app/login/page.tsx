@@ -13,6 +13,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import AuthHandler from "@/handlers/auth";
 import { useRouter } from "next/navigation";
 import { PAGE_ROUTES } from "@/lib/constants";
+import { useState } from "react";
+import { Spinner } from "@radix-ui/themes";
 
 type IFormInput = {
   email: string,
@@ -24,12 +26,16 @@ const Login = () => {
   const { register, handleSubmit } = useForm<IFormInput>();
   const authHandler = new AuthHandler();
 
+  const [loading, setLoading] = useState(false);
+
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
     try {
+      setLoading(true);
       const result = await authHandler.login(data);
       router.push(PAGE_ROUTES.HOME);
     } catch (error: any) {
       alert(error.message);
+      setLoading(false);
     }
   };
 
@@ -57,7 +63,7 @@ const Login = () => {
             />
           </CardContent>
           <CardFooter>
-            <Button type="submit">Login</Button>
+            {loading ? <Spinner /> : <Button type="submit">Login</Button>}
           </CardFooter>
         </form>
       </Card>

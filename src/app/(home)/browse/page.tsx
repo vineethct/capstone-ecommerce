@@ -11,7 +11,6 @@ import ProductsFromCollectionSekeleton from "../collection/[id]/skeleton";
 import { Spinner } from "@radix-ui/themes";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import withAuth from "@/context/AuthContext/with-auth-hoc";
 
 type PageInfo = {
   hasNextPage: boolean,
@@ -34,6 +33,7 @@ const BrowseProducts = () => {
   useEffect(() => {
     const searchString = searchParams.get("search")?.toString();
     fetchProductsByCollectionId(searchString || "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProductsByCollectionId = (inputString: string) => {
