@@ -32,7 +32,7 @@ const Profile = () => {
       <DropdownMenuContent>
         <DropdownMenuLabel>{userEmail}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem disabled>Profile</DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             router.replace(PAGE_ROUTES.LOGOUT);

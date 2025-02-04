@@ -67,7 +67,7 @@ const Products = () => {
                       <span className="text-xl font-bold ">
                         ₹{product.priceRange.maxVariantPrice.amount}
                       </span>
-                      <Button>Buy Now</Button>
+                      <Button>Add to Cart</Button>
                     </div>
                   </div>
                 </div>

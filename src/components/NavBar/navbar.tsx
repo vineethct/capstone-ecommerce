@@ -8,6 +8,9 @@ import useNavbarHeight from "@/store/navbar-store";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import Profile from "../Profile/profile";
+import { FaCartShopping } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
+import CartSheet from "../CartSheet/cart-sheet";
 
 const NavBar = () => {
   const navRef = useRef<HTMLDivElement>(null);
@@ -51,15 +54,16 @@ const NavBar = () => {
               <HamburgerIcon />
             </button>
           </div>
-
           {/* Navigation links */}
-          <div className="hidden  lg:flex lg:items-center lg:space-x-4">
+          <div className="hidden  lg:flex lg:items-center lg:space-x-2">
+            
             <Link
               href="/browse"
               className="rounded-md px-3 py-2  hover:bg-blackAccent hover:text-white"
             >
               Browse
             </Link>
+            <CartSheet />
             <Profile />
           </div>
         </div>
