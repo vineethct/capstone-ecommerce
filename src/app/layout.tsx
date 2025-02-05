@@ -7,6 +7,7 @@ import { poppins } from "@/components/ui/fonts";
 import Providers from "./(hoc)/providers";
 import AuthCheck from "./(hoc)/auth-check";
 import { cookies } from "next/headers";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Joybox",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Theme>
           <AuthCheck token={token?.value}>
             <Providers>{children}</Providers>
+            <Toaster />
           </AuthCheck>
         </Theme>
       </body>

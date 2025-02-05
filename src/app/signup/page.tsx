@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,11 +13,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@radix-ui/themes";
-import { SubmitHandler, useForm } from "react-hook-form";
 import AuthHandler from "@/handlers/auth";
-import { useRouter } from "next/navigation";
 import { PAGE_ROUTES } from "@/lib/constants";
-import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 interface IFormInput {
   email: string;
@@ -25,6 +26,7 @@ interface IFormInput {
 const Signup = () => {
   const authHandler = new AuthHandler();
   const router = useRouter();
+  const { toast } = useToast();
   const { register, handleSubmit, watch } = useForm<IFormInput>();
   const [loading, setLoading] = useState(false);
 
@@ -36,10 +38,18 @@ const Signup = () => {
         throw new Error("Password mismatch");
       }
       await authHandler.signup(data);
+      toast({
+        title: "Signup sucessful.",
+        description: `${data.email} created.`,
+      });
       router.replace(PAGE_ROUTES.LOGIN);
     } catch (error: any) {
       setLoading(false);
-      alert(error.message);
+      toast({
+        variant: "destructive",
+        title: "Failed to Signup",
+        description: error.message,
+      });
     }
   };
 
