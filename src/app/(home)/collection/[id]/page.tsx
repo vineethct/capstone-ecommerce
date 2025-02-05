@@ -11,6 +11,7 @@ import ProductsFromCollectionSekeleton from "./skeleton";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IItem, useCartStore } from "@/store/cart-store";
+import { FaCheck } from "react-icons/fa";
 
 const Products = () => {
   const { id }: { id: string } = useParams();
@@ -35,6 +36,15 @@ const Products = () => {
   const handleAddToCart = (product: IProduct) => {
     const item: IItem = { product, count: 1 };
     setItems([...items, item]);
+  };
+
+  const isItemInCart = (productId: string) => {
+    for (const item of items) {
+      if (item.product.id === productId) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return (
@@ -77,9 +87,15 @@ const Products = () => {
                       <span className="text-xl font-bold ">
                         ₹{product.priceRange.maxVariantPrice.amount}
                       </span>
-                      <Button onClick={() => handleAddToCart(product)}>
-                        Add to Cart
-                      </Button>
+                      {isItemInCart(product.id) ? (
+                        <Button disabled onClick={() => {}}>
+                          Added to Cart <FaCheck />
+                        </Button>
+                      ) : (
+                        <Button onClick={() => handleAddToCart(product)}>
+                          Add to Cart
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>

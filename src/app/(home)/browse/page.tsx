@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaCheck, FaMagnifyingGlass } from "react-icons/fa6";
 import InfiniteScroll from "react-infinite-scroller";
 import Image from "next/image";
 import { getProductsBySearch } from "@/data/shopify/products/products";
@@ -11,6 +11,7 @@ import ProductsFromCollectionSekeleton from "../collection/[id]/skeleton";
 import { Spinner } from "@radix-ui/themes";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { IItem, useCartStore } from "@/store/cart-store";
 
 type PageInfo = {
   hasNextPage: boolean,
@@ -22,6 +23,7 @@ const BrowseProducts = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const { items, setItems } = useCartStore();
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [pageInfo, setPageInfo] = useState<PageInfo>({
@@ -59,6 +61,20 @@ const BrowseProducts = () => {
     },
     500
   );
+
+  const handleAddToCart = (product: IProduct) => {
+    const item: IItem = { product, count: 1 };
+    setItems([...items, item]);
+  };
+
+  const isItemInCart = (productId: string) => {
+    for (const item of items) {
+      if (item.product.id === productId) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   return (
     <div className="p-5">
@@ -121,7 +137,15 @@ const BrowseProducts = () => {
                     <span className="text-xl font-bold ">
                       ₹{product.priceRange.maxVariantPrice.amount}
                     </span>
-                    <Button>Add to Cart</Button>
+                    {isItemInCart(product.id) ? (
+                      <Button disabled onClick={() => {}}>
+                        Added to Cart <FaCheck />
+                      </Button>
+                    ) : (
+                      <Button onClick={() => handleAddToCart(product)}>
+                        Add to Cart
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
