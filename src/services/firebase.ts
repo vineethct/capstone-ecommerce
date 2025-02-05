@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBt68WFyhYC1vQAoZG59GZiLMj2nQJbwt8",
-  authDomain: "joybox-b9845.firebaseapp.com",
-  projectId: "joybox-b9845",
-  storageBucket: "joybox-b9845.firebasestorage.app",
-  messagingSenderId: "191874820417",
-  appId: "1:191874820417:web:7c54ca90d0fb45812ed9c0",
-  measurementId: "G-500PKPXQGC",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

@@ -81,12 +81,15 @@ const CartItem = ({
           </Button>
         </div>
       </CardContent>
-      <div className="absolute right-5 top-3">
-        <FaTrashCan
-          className="cursor-pointer"
+      <div className="absolute right-3 top-3">
+        <Button
+          variant={"ghost"}
           aria-label="remove-from-cart"
+          className="px-2 py-1"
           onClick={onDeleteProduct}
-        />
+        >
+          <FaTrashCan />
+        </Button>
       </div>
     </Card>
   );

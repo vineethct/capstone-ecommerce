@@ -33,7 +33,10 @@ const CartSheet = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="relative flex size-10 items-center justify-center rounded-full hover:bg-blackAccent hover:text-white">
+      <SheetTrigger
+        aria-label="open-cart"
+        className="relative flex size-10 items-center justify-center rounded-full hover:bg-blackAccent hover:text-white"
+      >
         <FaCartShopping />
         {items.length > 0 && (
           <Badge
@@ -50,9 +53,11 @@ const CartSheet = () => {
             <FaCartShopping className="size-5" />
             <SheetTitle className="p-2">CART</SheetTitle>
           </div>
-          <div>
-            <p className="font-bold">{`${totalPrice} ${currencyCode}`}</p>
-          </div>
+          {items.length > 0 && (
+            <div>
+              <p className="font-bold">{`${totalPrice} ${currencyCode}`}</p>
+            </div>
+          )}
         </SheetHeader>
         <Separator />
         {items.length === 0 && (

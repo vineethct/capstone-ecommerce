@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Spinner } from "@radix-ui/themes";
 import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 import Link from "next/link";
+import { toast } from "@/hooks/use-toast";
 
 interface IFormInput {
   email: string;
@@ -45,7 +46,11 @@ const Login = () => {
 
       router.push(PAGE_ROUTES.HOME);
     } catch (error: any) {
-      alert(error.message);
+      toast({
+        variant: "destructive",
+        title: "Login failed!",
+        description: error.message,
+      });
       setLoading(false);
     }
   };
