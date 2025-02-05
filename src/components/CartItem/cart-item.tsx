@@ -9,18 +9,25 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { FaTrashCan } from "react-icons/fa6";
 
 const CartItem = ({
   item,
   items,
   updateCount,
+  setItems,
 }: {
   item: IItem,
   items: IItem[] | [],
   updateCount: (item: IItem, items: [] | IItem[]) => void,
+  setItems: (items: [] | IItem[]) => void,
 }) => {
+  const onDeleteProduct = () => {
+    setItems(items.filter((i) => i.product.id !== item.product.id));
+  };
+
   return (
-    <Card className="my-2">
+    <Card className="relative my-2">
       <CardHeader className="flex-row items-center gap-2">
         <div>
           <Image
@@ -74,6 +81,13 @@ const CartItem = ({
           </Button>
         </div>
       </CardContent>
+      <div className="absolute right-5 top-3">
+        <FaTrashCan
+          className="cursor-pointer"
+          aria-label="remove-from-cart"
+          onClick={onDeleteProduct}
+        />
+      </div>
     </Card>
   );
 };
