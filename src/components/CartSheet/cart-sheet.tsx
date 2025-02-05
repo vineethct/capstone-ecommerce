@@ -18,8 +18,11 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import UserHandler from "@/handlers/users";
+import { useUserCookieStore } from "@/store/user-cookie-store";
 
 const CartSheet = () => {
+  const { decoded } = useUserCookieStore();
   const { items, updateCount, setItems } = useCartStore();
   const totalPrice = items.reduce(
     (sum, item) =>
@@ -28,11 +31,19 @@ const CartSheet = () => {
         item.count,
     0
   );
+
+  const userHandler = new UserHandler();
   const currencyCode =
     items[0]?.product.priceRange.maxVariantPrice.currencyCode || "";
 
+  const onOpenChange = (open: boolean) => {
+    if (!open) {
+      userHandler.addToCart({ uid: decoded?.uid || "", cart: items });
+    }
+  };
+
   return (
-    <Sheet>
+    <Sheet onOpenChange={onOpenChange}>
       <SheetTrigger
         aria-label="open-cart"
         className="relative flex size-10 items-center justify-center rounded-full hover:bg-blackAccent hover:text-white"

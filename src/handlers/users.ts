@@ -9,28 +9,17 @@ import {
 } from "firebase/firestore";
 import { IProduct, IProducts } from "@/data/shopify/products/interfaces";
 import { db } from "@/services/firebase";
+import { IItem } from "@/store/cart-store";
 
 interface IUserDoc {
   email: string;
   uid: string;
-  cart:
-    | [
-        {
-          count: number,
-          product: IProducts,
-        },
-      ]
-    | [];
+  cart: IItem[] | [];
 }
 
 interface IAddToCart {
   uid: string;
-  cart: [
-    {
-      count: number,
-      product: IProducts,
-    },
-  ];
+  cart: IItem[] | [];
 }
 
 class UserHandler {
@@ -47,7 +36,7 @@ class UserHandler {
       const docRef = doc(db, "users", payload.uid);
 
       await updateDoc(docRef, {
-        cart: arrayUnion(payload.cart),
+        cart: payload.cart,
       });
     } catch (error: any) {
       throw new Error(error);

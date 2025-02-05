@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { IUser, useUserCookieStore } from "@/store/user-cookie-store";
 import { PAGE_ROUTES } from "@/lib/constants";
 import { openRoutes } from "@/middleware";
+import { useCartStore } from "@/store/cart-store";
 
 const AuthCheck = ({
   children,

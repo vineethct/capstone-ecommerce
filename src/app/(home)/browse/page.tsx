@@ -12,6 +12,8 @@ import { Spinner } from "@radix-ui/themes";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { IItem, useCartStore } from "@/store/cart-store";
+import UserHandler from "@/handlers/users";
+import { useUserCookieStore } from "@/store/user-cookie-store";
 
 type PageInfo = {
   hasNextPage: boolean,
@@ -24,6 +26,8 @@ const BrowseProducts = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const { items, setItems } = useCartStore();
+  const { decoded } = useUserCookieStore();
+  const userHandler = new UserHandler();
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [pageInfo, setPageInfo] = useState<PageInfo>({
@@ -62,9 +66,13 @@ const BrowseProducts = () => {
     500
   );
 
-  const handleAddToCart = (product: IProduct) => {
+  const handleAddToCart = async (product: IProduct) => {
     const item: IItem = { product, count: 1 };
     setItems([...items, item]);
+    await userHandler.addToCart({
+      uid: decoded?.uid || "",
+      cart: [...items, item],
+    });
   };
 
   const isItemInCart = (productId: string) => {

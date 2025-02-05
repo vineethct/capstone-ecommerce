@@ -11,18 +11,35 @@ import Profile from "../Profile/profile";
 import { FaCartShopping } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import CartSheet from "../CartSheet/cart-sheet";
+import { useCartStore } from "@/store/cart-store";
+import { useUserCookieStore } from "@/store/user-cookie-store";
+import UserHandler from "@/handlers/users";
 
 const NavBar = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen] = useState(false);
 
+  const { setItems } = useCartStore();
+  const { decoded } = useUserCookieStore();
   const { setHeight } = useNavbarHeight();
   const pathname = usePathname();
+  const userHandler = new UserHandler();
 
   useEffect(() => {
     if (!navRef.current) return;
     setHeight(navRef.current.clientHeight);
   }, [navRef, setHeight]);
+
+  useEffect(() => {
+    const init = async () => {
+      const result = await userHandler.getCart({ uid: decoded?.uid || "" });
+      if (result.success) {
+        setItems(result?.data?.cart || []);
+      }
+    };
+    if (decoded?.uid) init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [decoded]);
 
   return (
     <nav

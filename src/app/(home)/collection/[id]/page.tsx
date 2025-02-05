@@ -12,12 +12,17 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IItem, useCartStore } from "@/store/cart-store";
 import { FaCheck } from "react-icons/fa";
+import UserHandler from "@/handlers/users";
+import { useUserCookieStore } from "@/store/user-cookie-store";
 
 const Products = () => {
   const { id }: { id: string } = useParams();
   const [collection, setCollection] = useState<IProductsByCollection>();
   const [loading, setLoading] = useState(true);
   const { items, setItems } = useCartStore();
+  const { decoded } = useUserCookieStore();
+
+  const userHandler = new UserHandler();
 
   useEffect(() => {
     if (id) {
@@ -33,9 +38,13 @@ const Products = () => {
     }
   }, [id]);
 
-  const handleAddToCart = (product: IProduct) => {
+  const handleAddToCart = async (product: IProduct) => {
     const item: IItem = { product, count: 1 };
     setItems([...items, item]);
+    await userHandler.addToCart({
+      uid: decoded?.uid || "",
+      cart: [...items, item],
+    });
   };
 
   const isItemInCart = (productId: string) => {
