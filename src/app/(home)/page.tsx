@@ -1,10 +1,10 @@
 "use client";
 import { useRef } from "react";
-import HomeLanding from "../(modules)/home/landing";
-import LegoLanding from "../(modules)/home/lego-landing";
+import HomeLanding from "@/modules/home/landing";
+import LegoLanding from "@/modules/home/lego-landing";
 import { useScroll, motion } from "motion/react";
-import HotWheelsLanding from "../(modules)/home/hotwheels-landing";
-import DisneyLanding from "../(modules)/home/disney-landing";
+import HotWheelsLanding from "@/modules/home/hotwheels-landing";
+import DisneyLanding from "@/modules/home/disney-landing";
 import { useUserCookieStore } from "@/store/user-cookie-store";
 
 const Home = () => {

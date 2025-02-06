@@ -4,8 +4,8 @@ import { Theme } from "@radix-ui/themes";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { poppins } from "@/components/ui/fonts";
-import Providers from "./(hoc)/providers";
-import AuthCheck from "./(hoc)/auth-check";
+import Providers from "../hoc/providers";
+import AuthCheck from "../hoc/auth-check";
 import { cookies } from "next/headers";
 import { Toaster } from "@/components/ui/toaster";
 
