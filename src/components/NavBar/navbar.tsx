@@ -17,7 +17,7 @@ import UserHandler from "@/handlers/users";
 
 const NavBar = () => {
   const navRef = useRef<HTMLDivElement>(null);
-  const [isMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { setItems } = useCartStore();
   const { decoded } = useUserCookieStore();
@@ -67,24 +67,31 @@ const NavBar = () => {
           </div>
 
           {/* Hamburger menu (mobile) */}
-          <div className="block lg:hidden">
+          {/* <div className="ml-auto block lg:hidden">
             <button
-              // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              onClick={() => {}}
-              className=" focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              // onClick={() => {}}
+              className="focus:outline-none"
             >
               <HamburgerIcon />
             </button>
-          </div>
+          </div> */}
+
           {/* Navigation links */}
-          <div className="hidden  lg:flex lg:items-center lg:space-x-2">
+          <div className="ml-auto mr-2 lg:flex lg:items-center lg:space-x-2">
             <Link
               href="/browse"
               className="rounded-md px-3 py-2  hover:bg-blackAccent hover:text-white"
             >
               Browse
             </Link>
+          </div>
+
+          <div className="mr-2">
             <CartSheet />
+          </div>
+
+          <div className="block">
             <Profile />
           </div>
         </div>

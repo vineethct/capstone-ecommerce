@@ -2,6 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { FaCheck, FaMagnifyingGlass } from "react-icons/fa6";
 import InfiniteScroll from "react-infinite-scroller";
 import Image from "next/image";
@@ -86,11 +94,23 @@ const BrowseProducts = () => {
 
   return (
     <div className="p-5">
-      <h3 className={`text-3xl font-bold italic md:text-6xl`}>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Browse</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <h3 className={`mt-2 text-3xl font-bold italic md:text-6xl`}>
         {`Browse Products`}
       </h3>
 
-      <div className=" mt-6 flex max-w-md ">
+      <div className="mt-6 flex max-w-md ">
         <Input
           ref={inputRef}
           onChange={(e) => handleSearch(e.target.value)}
@@ -100,6 +120,7 @@ const BrowseProducts = () => {
           defaultValue={searchParams.get("search")?.toString()}
         />
         <Button
+          aria-label="search"
           type="submit"
           variant="default"
           className="rounded-l-none bg-blackAccent text-white hover:bg-blue-600"

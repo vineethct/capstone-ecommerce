@@ -10,6 +10,14 @@ import {
 import ProductsFromCollectionSekeleton from "./skeleton";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { IItem, useCartStore } from "@/store/cart-store";
 import { FaCheck } from "react-icons/fa";
 import UserHandler from "@/handlers/users";
@@ -67,7 +75,19 @@ const Products = () => {
         <ProductsFromCollectionSekeleton />
       ) : (
         <>
-          <h3 className={`text-3xl font-bold italic md:text-6xl`}>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{collection?.collection.title}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
+          <h3 className={`mt-2 text-3xl font-bold italic md:text-6xl`}>
             {collection?.collection.title}
           </h3>
           <p className="mt-5">{collection?.collection.description}</p>
